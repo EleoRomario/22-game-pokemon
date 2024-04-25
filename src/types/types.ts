@@ -56,3 +56,8 @@ export type POKEMON_TYPES =
 	| "fairy"
 	| "unknown"
 	| "shadow";
+
+export interface ANSWER {
+	name: string;
+	isCorrect: boolean;
+}
