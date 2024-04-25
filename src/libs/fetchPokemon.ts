@@ -5,7 +5,7 @@ import { hectogramToKilogram } from "../helpers/hectogramToKilogram";
 import { LANGUAGE, POKEMON_TYPE } from "../types/types";
 
 export async function fetchPokemon() {
-	const pikachu = "pikachu";
+	const pikachu = "bulbasaur";
 	try {
 		const pokemon = await fetch(`${PATH_API}/pokemon/${pikachu}`)
 			.then((res) => res.json())

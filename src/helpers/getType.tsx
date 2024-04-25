@@ -5,43 +5,43 @@ export function getType(type: POKEMON_TYPES) {
 	const color = (type: POKEMON_TYPES) => {
 		switch (type) {
 			case "normal":
-				return "#123";
+				return "#7f8c8d";
 			case "fighting":
-				return "#123";
+				return "#e74c3c";
 			case "flying":
-				return "#123";
+				return "#81b9ef";
 			case "poison":
-				return "#123";
+				return "#9b59b6";
 			case "ground":
-				return "#123";
+				return "#c29867";
 			case "rock":
-				return "#123";
+				return "#4d534c";
 			case "bug":
-				return "#123";
+				return "#1abc9c";
 			case "ghost":
-				return "#123";
+				return "#8e44ad";
 			case "steel":
-				return "#123";
+				return "#2980b9";
 			case "fire":
-				return "#123";
+				return "#e67e22";
 			case "water":
-				return "#123";
+				return "#3498db";
 			case "grass":
-				return "#123";
+				return "#2ecc71";
 			case "electric":
 				return "#f1c40f";
 			case "psychic":
-				return "#123";
+				return "#ff6b6b";
 			case "ice":
-				return "#123";
+				return "#48dbfb";
 			case "dragon":
-				return "#123";
+				return "#5f27cd";
 			case "dark":
-				return "#123";
+				return "#222f3e";
 			case "fairy":
-				return "#123";
+				return "#f368e0";
 			default:
-				return "#123";
+				return "#8395a7";
 		}
 	};
 
