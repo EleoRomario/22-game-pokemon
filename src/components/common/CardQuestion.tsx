@@ -1,13 +1,33 @@
+import confetti from "canvas-confetti";
 import { usePokemon } from "../../hooks/usePokemon";
 import { Alternatives } from "./Alternatives";
+import { useEffect, useState } from "react";
 
 export const CardQuestion = () => {
 	const { pokemon, alternatives, isLoading, error } = usePokemon();
-	console.log(alternatives);
-	console.log(pokemon);
+
+	const [alternativeCorrect, setAlternativeCorrect] =
+		useState<boolean>(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setAlternativeCorrect(false);
+		}, 100);
+	}, [alternativeCorrect]);
+
+	const handleCorrect = (isCorrect: boolean) => {
+		setAlternativeCorrect(!isCorrect);
+		if (isCorrect) {
+			confetti();
+		}
+	};
 
 	return (
-		<div className="w-96 h-auto bg-[#111111] relative rounded-3xl flex ">
+		<div
+			className={`${
+				!alternativeCorrect && "animate-error"
+			} w-96 h-auto bg-[#111111] relative rounded-3xl flex `}
+		>
 			<div
 				className="absolute top-0 left-0 bottom-0 right-0 rounded-3xl z-0"
 				style={{
@@ -27,7 +47,10 @@ export const CardQuestion = () => {
 							className="h-80 aspect-square"
 						/>
 					</div>
-					<Alternatives alternatives={alternatives} />
+					<Alternatives
+						alternatives={alternatives}
+						onClick={handleCorrect}
+					/>
 				</div>
 			)}
 		</div>
