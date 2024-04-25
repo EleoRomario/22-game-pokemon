@@ -1,13 +1,12 @@
-import './App.css'
-import { CardPokemon } from './components/CardPokemon'
+import "./App.css";
+import { MenuInitial } from "./components/interfaces/MenuInitial";
 
 function App() {
-
-  return (
-    <main className='flex justify-center bg-black h-screen items-center'>
-      <CardPokemon />
-    </main>
-  )
+	return (
+		<main className="layout flex justify-center text-white h-screen items-center">
+			<MenuInitial />
+		</main>
+	);
 }
 
-export default App
+export default App;
