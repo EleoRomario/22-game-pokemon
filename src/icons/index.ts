@@ -19,3 +19,4 @@ export { Fairy } from "./Fairy";
 export { Balance } from "./Balance";
 export { Rule } from "./Rule";
 export { Logo } from "./Logo";
+export { Pokeball } from "./Pokeball";
