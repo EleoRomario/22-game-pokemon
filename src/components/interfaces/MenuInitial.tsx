@@ -1,9 +1,12 @@
 import { Logo, Pokeball } from "../../icons";
+import { useGame } from "../../store/game";
 import { Button } from "../common/Button";
 
 export const MenuInitial = () => {
+	const setGameInit = useGame((state) => state.setGameInit);
+
 	const handleInitGame = () => {
-		console.log("Iniciar juego");
+		setGameInit(true);
 	};
 	return (
 		<div className="flex flex-col items-center gap-10">
