@@ -4,9 +4,9 @@ import { CardPokemon } from './components/CardPokemon'
 function App() {
 
   return (
-    <h1>
+    <main className='flex justify-center bg-black h-screen items-center'>
       <CardPokemon />
-    </h1>
+    </main>
   )
 }
 
