@@ -4,10 +4,11 @@ import { decimetersToMeters } from "../helpers/decimetersToMeters";
 import { hectogramToKilogram } from "../helpers/hectogramToKilogram";
 import { LANGUAGE, POKEMON_TYPE } from "../types/types";
 
-export async function fetchPokemon() {
-	const pikachu = "charmeleon";
+export async function fetchPokemon(name: string) {
 	try {
-		const pokemon = await fetch(`${PATH_API}/pokemon/${pikachu}`)
+		if (!name) throw new Error("No name provided");
+
+		const pokemon = await fetch(`${PATH_API}/pokemon/${name}`)
 			.then((res) => res.json())
 			.then((data) => data);
 
