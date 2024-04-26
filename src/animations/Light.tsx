@@ -4,11 +4,11 @@ export const Light = () => {
 	const color = useGame((state) => state.color);
 
 	return (
-		<div className="absolute h-56 w-40 top-0 flex justify-center">
+		<div className="absolute h-56 w-60 top-0 flex justify-center">
 			<div
 				className="absolute size-full -translate-y-5 blur-lg -z-0 "
 				style={{
-					backgroundImage: `linear-gradient(to left, transparent, ${color}96,transparent)`,
+					backgroundImage: `linear-gradient(to left, transparent 5%, ${color}96,transparent 95%)`,
 					maskImage: `linear-gradient(to top, transparent 0%, black 100%)`,
 				}}
 			></div>
