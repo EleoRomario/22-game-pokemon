@@ -16,6 +16,7 @@ export default {
 				error: "error 0.5s ease-in-out",
 				tada: "tada 1s ease-in-out",
 				"zoom-in": "zoom-in 0.2s ease-out",
+				float: "float 3s ease-in-out infinite",
 			},
 			keyframes: {
 				error: {
@@ -72,6 +73,17 @@ export default {
 					"100%": {
 						opacity: "1",
 						transform: "scale(1)",
+					},
+				},
+				float: {
+					"0%": {
+						transform: "translateY(0px)",
+					},
+					"50%": {
+						transform: "translateY(-10px)",
+					},
+					"100%": {
+						transform: "translateY(0px)",
 					},
 				},
 			},
