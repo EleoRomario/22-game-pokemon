@@ -5,7 +5,6 @@ export const LogoColor = (props: SVGProps<SVGSVGElement>) => {
 		<svg
 			{...props}
 			xmlns="http://www.w3.org/2000/svg"
-			enable-background="new 0 0 280 103"
 			viewBox="0 0 269.46899 98.814003"
 			height="98.814003"
 			width="269.46899"
