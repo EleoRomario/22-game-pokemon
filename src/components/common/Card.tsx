@@ -1,7 +1,6 @@
 import { LoadingPokemon } from "../../animations/LoadingPokemon";
 import { usePokemon } from "../../hooks/usePokemon";
-import { CardContainer } from "./CardContainer";
-
+import { Bubble } from "./Bubble";
 export const Card = () => {
 	const { pokemon, isLoading, error } = usePokemon();
 
@@ -14,29 +13,18 @@ export const Card = () => {
 	}
 
 	return (
-		<div className="relative">
-			<div
-				className="absolute top-0 left-0 right-0 bottom-0 blur-3xl opacity-50 -z-10 animate-pulse rounded-3xl scale-105"
-				style={{
-					backgroundColor: pokemon?.color,
-					backdropFilter: "blur(20px)",
-				}}
-			></div>
-			<CardContainer
-				className="animate-zoom-in w-32 h-40"
-				pokemon={pokemon}
-			>
+		<div className="animate-zoom-in relative">
+			<img
+				src={pokemon?.img}
+				className="absolute opacity-[0.01] -z-10 rounded-3xl scale-[500%] brightness-200"
+			></img>
+			<Bubble color={pokemon?.color} className="size-40">
 				<img
 					src={pokemon?.img}
 					alt={pokemon?.name}
-					className="h-full w-full scale-150 opacity-[0.02] absolute top-0 left-0 right-0 bottom-0 z-10"
+					className="h-20 z-20"
 				/>
-				<img
-					src={pokemon?.img}
-					alt={pokemon?.name}
-					className="h-32 z-20"
-				/>
-			</CardContainer>
+			</Bubble>
 		</div>
 	);
 };
