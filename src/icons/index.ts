@@ -23,3 +23,4 @@ export { Pokeball } from "./Pokeball";
 export { PokeballAlternative } from "./PokeballAlternative";
 export { LogoColor } from "./LogoColor";
 export { PokeballColor } from "./PokeballColor";
+export { Exit } from "./Exit";
