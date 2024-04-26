@@ -1,7 +1,7 @@
 import { LogoColor, Pokeball } from "../../icons";
 import { useGame } from "../../store/game";
 import { Button } from "../common/Button";
-import { Card } from "../common/Card";
+import { HeroCards } from "../common/HeroCards";
 
 export const MenuInitial = () => {
 	const setGameInit = useGame((state) => state.setGameInit);
@@ -11,7 +11,7 @@ export const MenuInitial = () => {
 	};
 	return (
 		<div className="flex flex-col items-center gap-10 justify-center relative">
-			<Card />
+			<HeroCards />
 			<h1 className="text-5xl flex-col flex text-center">
 				<span>Adivina el</span>
 				<span>
