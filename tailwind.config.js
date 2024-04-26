@@ -4,7 +4,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				accent: "#5f37bc",
+				accent: {
+					DEFAULT: "#364eba",
+					900: "#0d1a35",
+				},
+				bg: {
+					DEFAULT: "#111111",
+				},
 			},
 			animation: {
 				error: "error 0.5s ease-in-out",
