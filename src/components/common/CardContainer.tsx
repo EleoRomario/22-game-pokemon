@@ -9,11 +9,11 @@ interface CardContainerProps {
 export const CardContainer = ({
 	children,
 	pokemon,
-	className,
+	className = "w-16 h-20",
 }: CardContainerProps) => {
 	return (
 		<div
-			className={`${className} w-40 h-48 relative rounded-xl p-px -z-10 overflow-hidden`}
+			className={`${className} relative rounded-xl p-px -z-10 `}
 			style={{
 				backgroundImage: `linear-gradient(to bottom, ${pokemon?.color}55, #1a1a1a)`,
 				backdropFilter: "blur(3px)",
@@ -36,7 +36,7 @@ export const CardContainer = ({
 				></div>
 			</div>
 			<div className="z-10 relative flex justify-center items-center h-full w-full">
-				{pokemon && <>{children}</>}
+				{children}
 			</div>
 		</div>
 	);
