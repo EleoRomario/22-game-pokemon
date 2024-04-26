@@ -5,9 +5,11 @@ import { HeroCards } from "../common/HeroCards";
 
 export const MenuInitial = () => {
 	const setGameInit = useGame((state) => state.setGameInit);
+	const setInGame = useGame((state) => state.setInGame);
 
 	const handleInitGame = () => {
 		setGameInit(true);
+		setInGame(true);
 	};
 	return (
 		<div className="flex flex-col items-center gap-10 justify-center relative">
