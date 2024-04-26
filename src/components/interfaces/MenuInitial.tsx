@@ -1,4 +1,4 @@
-import { Logo, Pokeball } from "../../icons";
+import { LogoColor, Pokeball } from "../../icons";
 import { useGame } from "../../store/game";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
@@ -15,7 +15,7 @@ export const MenuInitial = () => {
 			<h1 className="text-5xl flex-col flex text-center">
 				<span>Adivina el</span>
 				<span>
-					<Logo className="h-40 w-auto" />
+					<LogoColor className="h-40 w-auto" />
 				</span>
 			</h1>
 			<Button label="Iniciar" icon={Pokeball} onClick={handleInitGame} />
