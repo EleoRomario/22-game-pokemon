@@ -36,9 +36,10 @@ export const CardQuestion = () => {
 						<img
 							src={pokemon.img}
 							alt={pokemon.name}
-							className="h-80 aspect-square"
+							className="h-80 aspect-square grayscale-100 brightness-0"
 						/>
 					</div>
+					<p className="font-bold text-3xl">¿Qué POKÉMON es?</p>
 					<Alternatives
 						alternatives={alternatives}
 						onClick={handleCorrect}
