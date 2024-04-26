@@ -6,7 +6,7 @@ import { MenuInitial } from "./components/interfaces/MenuInitial";
 import { useGame } from "./store/game";
 
 function App() {
-	const gameInit = useGame((state) => state.gameInit);
+	const inGame = useGame((state) => state.inGame);
 	const color = useGame((state) => state.color);
 	return (
 		<main className="relative bg-bg flex justify-center text-white min-h-screen p-20 items-center">
@@ -18,7 +18,7 @@ function App() {
 					backgroundColor: color.concat("80"),
 				}}
 			></div>
-			<div className="z-10">{!gameInit ? <MenuInitial /> : <Game />}</div>
+			<div className="z-10">{!inGame ? <MenuInitial /> : <Game />}</div>
 		</main>
 	);
 }
