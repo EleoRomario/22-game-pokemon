@@ -14,6 +14,8 @@ export default {
 			},
 			animation: {
 				error: "error 0.5s ease-in-out",
+				tada: "tada 1s ease-in-out",
+				"zoom-in": "zoom-in 0.2s ease-out",
 			},
 			keyframes: {
 				error: {
@@ -25,6 +27,51 @@ export default {
 					},
 					"50%": {
 						transform: "translateX(5px)",
+					},
+				},
+				tada: {
+					"0%": {
+						transform: "scale(1)",
+					},
+					"10%": {
+						transform: "scale(0.9) rotate(-3deg)",
+					},
+					"20%": {
+						transform: "scale(0.9) rotate(-3deg)",
+					},
+					"30%": {
+						transform: "scale(1.1) rotate(3deg)",
+					},
+					"40%": {
+						transform: "scale(1.1) rotate(-3deg)",
+					},
+					"50%": {
+						transform: "scale(1.1) rotate(3deg)",
+					},
+					"60%": {
+						transform: "scale(1.1) rotate(-3deg)",
+					},
+					"70%": {
+						transform: "scale(1.1) rotate(3deg)",
+					},
+					"80%": {
+						transform: "scale(1.1) rotate(-3deg)",
+					},
+					"90%": {
+						transform: "scale(1.1) rotate(3deg)",
+					},
+					"100%": {
+						transform: "scale(1) rotate(0)",
+					},
+				},
+				"zoom-in": {
+					"0%": {
+						opacity: "0",
+						transform: "scale(.5)",
+					},
+					"100%": {
+						opacity: "1",
+						transform: "scale(1)",
 					},
 				},
 			},
