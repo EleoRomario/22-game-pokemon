@@ -12,7 +12,6 @@ export function getPokemonsAlternatives(pokemons: POKEMON[]) {
 			isCorrect: false,
 		};
 	});
-	console.log(answerAlternatives);
 	const answer: ANSWER[] = [
 		...answerAlternatives,
 		{
