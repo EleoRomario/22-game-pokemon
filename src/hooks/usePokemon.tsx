@@ -4,12 +4,15 @@ import { ANSWER, GENERATION, POKEMON } from "../types/types";
 import { getPokemonsAlternatives } from "../helpers/getPokemonsAlternatives";
 import { getGeneration } from "../libs/getGeneration";
 import { fetchPokemon } from "../libs/fetchPokemon";
+import { useGame } from "../store/game";
 
 export const usePokemon = () => {
 	const { isLoading, data, error } = useQuery<GENERATION>({
 		queryKey: ["pokemon"],
 		queryFn: getGeneration,
 	});
+
+	const setColor = useGame((state) => state.setColor);
 
 	const [pokemon, setPokemon] = useState<POKEMON | null>(null);
 	const [alternatives, setAlternatives] = useState<ANSWER[]>([]);
@@ -22,6 +25,7 @@ export const usePokemon = () => {
 					pokemons.find((p) => p.isCorrect)!.name
 				);
 				setPokemon(pokemon);
+				setColor(pokemon.color);
 				setAlternatives(pokemons);
 			}
 		};
