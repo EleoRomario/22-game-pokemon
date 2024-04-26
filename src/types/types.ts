@@ -61,3 +61,8 @@ export interface ANSWER {
 	name: string;
 	isCorrect: boolean;
 }
+
+export interface GENERATION {
+	generation: string;
+	pokemon_species: string[];
+}
