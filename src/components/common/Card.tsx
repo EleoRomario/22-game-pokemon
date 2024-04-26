@@ -22,7 +22,10 @@ export const Card = () => {
 					backdropFilter: "blur(20px)",
 				}}
 			></div>
-			<CardContainer className="animate-zoom-in" pokemon={pokemon}>
+			<CardContainer
+				className="animate-zoom-in w-32 h-40"
+				pokemon={pokemon}
+			>
 				<img
 					src={pokemon?.img}
 					alt={pokemon?.name}
