@@ -1,27 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { ANSWER, POKEMON } from "../types/types";
-import { getPokemons } from "../libs/getPokemons";
+import { ANSWER, GENERATION, POKEMON } from "../types/types";
 import { getPokemonsAlternatives } from "../helpers/getPokemonsAlternatives";
+import { getGeneration } from "../libs/getGeneration";
+import { fetchPokemon } from "../libs/fetchPokemon";
 
 export const usePokemon = () => {
-	const { isLoading, data, error } = useQuery({
+	const { isLoading, data, error } = useQuery<GENERATION>({
 		queryKey: ["pokemon"],
-		queryFn: getPokemons,
+		queryFn: getGeneration,
 	});
 
 	const [pokemon, setPokemon] = useState<POKEMON | null>(null);
 	const [alternatives, setAlternatives] = useState<ANSWER[]>([]);
 
 	useEffect(() => {
-		if (data) {
-			const pokemons = getPokemonsAlternatives(data);
-			const pokemon = data.find(
-				(p) => p.name === pokemons.find((p) => p.isCorrect)?.name
-			);
-			setPokemon(pokemon);
-			setAlternatives(pokemons);
-		}
+		const pokemons = async () => {
+			if (data) {
+				const pokemons = getPokemonsAlternatives(data.pokemon_species);
+				const pokemon = await fetchPokemon(
+					pokemons.find((p) => p.isCorrect)!.name
+				);
+				setPokemon(pokemon);
+				setAlternatives(pokemons);
+			}
+		};
+		pokemons();
 	}, [data]);
 
 	return { pokemon, isLoading, error, alternatives };
