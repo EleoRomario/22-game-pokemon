@@ -1,16 +1,10 @@
+import { useInitGame } from "../../hooks/useInitGame";
 import { LogoColor, Pokeball } from "../../icons";
-import { useGame } from "../../store/game";
 import { Button } from "../common/Button";
 import { HeroCards } from "../common/HeroCards";
 
 export const MenuInitial = () => {
-	const setGameInit = useGame((state) => state.setGameInit);
-	const setInGame = useGame((state) => state.setInGame);
-
-	const handleInitGame = () => {
-		setGameInit(true);
-		setInGame(true);
-	};
+	const { handleInitGame } = useInitGame();
 	return (
 		<div className="flex flex-col items-center gap-10 justify-center relative">
 			<HeroCards />

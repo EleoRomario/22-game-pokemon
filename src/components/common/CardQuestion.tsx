@@ -1,32 +1,15 @@
-import confetti from "canvas-confetti";
 import { usePokemon } from "../../hooks/usePokemon";
+import { useQuestion } from "../../hooks/useQuestion";
 import { Alternatives } from "./Alternatives";
 import { useEffect, useState } from "react";
-import { LoadingPokemon } from "../../animations/LoadingPokemon";
 
 export const CardQuestion = () => {
-	const { pokemon, alternatives, isLoading, error } = usePokemon();
-
-	const [alternativeCorrect, setAlternativeCorrect] =
-		useState<boolean>(false);
-
+	const { pokemon } = usePokemon();
+	const { generateQuestion } = useQuestion();
+	const [isCorrect, setIsCorrect] = useState(false);
 	useEffect(() => {
-		const time = setTimeout(() => {
-			setAlternativeCorrect(false);
-		}, 100);
-
-		return () => clearTimeout(time);
-	}, [alternativeCorrect]);
-
-	const handleCorrect = (isCorrect: boolean) => {
-		setAlternativeCorrect(!isCorrect);
-		if (isCorrect) {
-			confetti();
-		}
-	};
-
-	if (isLoading) return <LoadingPokemon />;
-	if (error) return <div>Error</div>;
+		generateQuestion();
+	}, []);
 
 	return (
 		<>
@@ -36,14 +19,14 @@ export const CardQuestion = () => {
 						<img
 							src={pokemon.img}
 							alt={pokemon.name}
-							className="h-80 aspect-square grayscale-100 brightness-0"
+							className={`h-80 aspect-square ${
+								!isCorrect &&
+								"grayscale-100 brightness-0 select-none pointer-events-none"
+							}`}
 						/>
 					</div>
 					<p className="font-bold text-3xl">¿Qué POKÉMON es?</p>
-					<Alternatives
-						alternatives={alternatives}
-						onClick={handleCorrect}
-					/>
+					<Alternatives setIsCorrect={setIsCorrect} />
 				</div>
 			)}
 		</>

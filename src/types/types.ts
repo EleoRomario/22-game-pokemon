@@ -1,11 +1,5 @@
 export interface POKEMON {
 	name: string;
-	order: number;
-	type: POKEMON_TYPES[];
-	typeEs: string[];
-	about: string;
-	weight: number;
-	height: number;
 	img: string;
 	color: string;
 }
@@ -65,4 +59,9 @@ export interface ANSWER {
 export interface GENERATION {
 	generation: string;
 	pokemon_species: string[];
+}
+
+export interface LEVEL {
+	level: number;
+	questions: ANSWER[][];
 }

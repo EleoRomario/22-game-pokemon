@@ -1,8 +1,6 @@
 import { ANSWER } from "../types/types";
 
-export function getPokemonsAlternatives(pokemons: string[]) {
-	const pokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
-
+export function getPokemonsAlternatives(pokemons: string[], pokemon: string) {
 	const alternatives = pokemons.filter((p) => p !== pokemon);
 	const randomAlternatives = alternatives.sort(() => Math.random() - 0.5);
 
@@ -18,7 +16,7 @@ export function getPokemonsAlternatives(pokemons: string[]) {
 			name: pokemon,
 			isCorrect: true,
 		},
-	] as ANSWER[];
+	];
 
 	return answer;
 }

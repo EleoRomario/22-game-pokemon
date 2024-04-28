@@ -1,4 +1,4 @@
-import { usePokemon } from "../hooks/usePokemon";
+import { usePokemon } from "../hooks/usePokemons";
 import { Balance, Rule } from "../icons";
 import { TagTypePokemon } from "./TagTypePokemon";
 

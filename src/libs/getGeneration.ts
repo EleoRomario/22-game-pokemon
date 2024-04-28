@@ -1,9 +1,9 @@
 import { PATH_API } from "../constants/api";
 import { LANGUAGE, POKEMON } from "../types/types";
 
-export async function getGeneration() {
-	const generation = 1;
-	return await fetch(`${PATH_API}/generation/${generation}`)
+export async function getGeneration(generation?: number) {
+	const gen = generation || 1;
+	return await fetch(`${PATH_API}/generation/${gen}`)
 		.then((response) => response.json())
 		.then((data) => {
 			return {
