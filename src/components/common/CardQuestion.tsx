@@ -2,14 +2,18 @@ import { usePokemon } from "../../hooks/usePokemon";
 import { useQuestion } from "../../hooks/useQuestion";
 import { Alternatives } from "./Alternatives";
 import { useEffect, useState } from "react";
+import { ButtonUI } from "./ButtonUI";
+import { LoadingPokemon } from "../../animations/LoadingPokemon";
 
 export const CardQuestion = () => {
 	const { pokemon } = usePokemon();
-	const { generateQuestion } = useQuestion();
+	const { generateQuestion, loading } = useQuestion();
 	const [isCorrect, setIsCorrect] = useState(false);
 	useEffect(() => {
 		generateQuestion();
 	}, []);
+
+	if (loading) return <LoadingPokemon />;
 
 	return (
 		<>
@@ -26,7 +30,20 @@ export const CardQuestion = () => {
 						/>
 					</div>
 					<p className="font-bold text-3xl">¿Qué POKÉMON es?</p>
-					<Alternatives setIsCorrect={setIsCorrect} />
+					{isCorrect ? (
+						<p className="text-2xl">
+							¡Correcto! es {pokemon.name.toUpperCase()}
+							<ButtonUI
+								label="Siguiente"
+								onClick={() => {
+									setIsCorrect(false);
+									generateQuestion();
+								}}
+							/>
+						</p>
+					) : (
+						<Alternatives setIsCorrect={setIsCorrect} />
+					)}
 				</div>
 			)}
 		</>

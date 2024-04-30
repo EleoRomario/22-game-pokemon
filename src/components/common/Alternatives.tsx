@@ -10,7 +10,7 @@ interface AlternativesProps {
 }
 
 export const Alternatives = ({ setIsCorrect }: AlternativesProps) => {
-	const { question, generateQuestion } = useQuestion();
+	const { question } = useQuestion();
 	const [order, setOrder] = useState<ANSWER[] | null>(null);
 
 	useEffect(() => {
@@ -21,17 +21,13 @@ export const Alternatives = ({ setIsCorrect }: AlternativesProps) => {
 		if (isCorrect) {
 			confetti();
 			setIsCorrect(true);
-			setTimeout(() => {
-				setIsCorrect(false);
-				generateQuestion();
-			}, 2000);
 		} else {
 			console.error("Incorrecto");
 		}
 	};
 
 	return (
-		<ul className="flex gap-4 flex-col w-full">
+		<ul className="gap-4 grid grid-cols-2 w-full">
 			{order &&
 				order.map((alternative, index) => (
 					<li key={index}>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getPokemonRandom } from "../helpers/getPokemonRandomt";
 import { getPokemonsAlternatives } from "../helpers/getPokemonsAlternatives";
 import { getPokemon } from "../libs/getPokemon";
@@ -13,26 +14,40 @@ export const useQuestion = () => {
 	const questionsAnswered = useScoreGame((state) => state.questionsAnswered);
 	const setQuestion = useScoreGame((state) => state.setQuestion);
 	const { addPokemon } = usePokemon();
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | unknown>(null);
 
 	const generateQuestion = async () => {
-		if (level === 1) {
-			if (pokemons) {
-				const pokemon = getPokemonRandom(pokemons);
-				if (!existPokemonInQuestions(pokemon)) {
-					const question: ANSWER[] = getPokemonsAlternatives(
-						pokemons,
-						pokemon
-					);
+		try {
+			if (level === 1) {
+				if (pokemons) {
+					const pokemon = getPokemonRandom(pokemons);
+					if (!existPokemonInQuestions(pokemon)) {
+						const question: ANSWER[] = getPokemonsAlternatives(
+							pokemons,
+							pokemon
+						);
 
-					const nameSelected = question.find((q) => q.isCorrect)
-						?.name as string;
+						const nameSelected = question.find((q) => q.isCorrect)
+							?.name as string;
 
-					const data = await getPokemon(nameSelected);
+						setLoading(true);
 
-					addPokemon(data);
-					setQuestion(question);
+						const data = await getPokemon(nameSelected);
+
+						if (data) {
+							setLoading(false);
+						}
+
+						addPokemon(data);
+						setQuestion(question);
+					}
 				}
 			}
+		} catch (error) {
+			setError(error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -43,5 +58,7 @@ export const useQuestion = () => {
 	return {
 		question,
 		generateQuestion,
+		loading,
+		error,
 	};
 };
